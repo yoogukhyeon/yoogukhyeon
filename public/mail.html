@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image upload</title>
+
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- 날짜와 시간을 쉽게 다를수있는 라이브러리 -->
+    <script src="./js/moment.js"></script>
+
+    <script>
+        $(function(){
+            const curDate = moment().format('YYYY-MM-DD HH:mm');
+            $('#createDate').attr('value',curDate);
+            $('#photoInput').change(function(){
+                readURL(this);
+            })
+        })
+
+        function readURL(input){
+            if(input.files && input.files[0]){
+                const reader = new FileReader();
+                reader.onload = function(e){
+                    $('#photoOutput').attr('src' , e.target.result);
+                }
+                reader.readAsDataURL(input.files[0])
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>이미지 업로드</h1>
+    <form action="/mail" method="post" enctype="multipart/form-data">
+        <p>현재시간 : <input type="text" name="createDate" id="createDate" readonly></p>
+        <p>보내는 사람 : <input type="text" name="sendid"></p>
+        <p>보내는 이메일 : <input type="text" name="sendmail"></p>
+        <p>받는 이메일 : <input type="text" name="tomail"></p>
+        <p>받는이 : <input type="text" name="toname"></p>
+        <p>제목 : <input type="text" name="title"></p>
+        <p><textarea name="content" id="" cols="40" rows="7"></textarea></p>
+        <p>이미지 : <input type="file" name="photo" id="photoInput"></p>
+        <p><img src="" alt="" id="photoOutput" width="250" name="photoOutput"></p>
+        <p><input type="submit" value="확인"></p>
+    </form>
+   
+</body>
+</html>

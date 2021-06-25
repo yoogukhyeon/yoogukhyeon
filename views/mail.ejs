@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image upload</title>
+</head>
+<body>
+
+
+    <h1>이메일 정보</h1>
+    <p>현재시간 : <%= sendid %></p>
+    <p>보내는 사람 :<%= sendid %> </p>
+    <p>보내는 이메일 : <%= sendmail %></p>
+    <p>받는 이메일 : <%= tomail %></p>
+    <p>받는이 : <%= toname %></p>
+    <p>제목 : <%= title %></p>
+    <p><textarea name="content" id="" cols="40" rows="7"><%= content %></textarea></p>
+    <p>보낸 이미지</p>
+    <p><img src="<%= filename %>" alt="" id="photoOutput" width="250"></p>
+
+ 
+   
+</body>
+</html>
